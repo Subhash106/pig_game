@@ -1,0 +1,188 @@
+:root {
+  --color-primary-light: #a61e4d;
+  --color-primary-light-2: #faa2c1;
+  --color-primary: #d6336c;
+  --color-primary-dark-2: #e599f7;
+  --color-primary-dark: #862e9c;
+  --color-gray: #333;
+  --color-gray-1: #eee;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+.container {
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  height: 100vh;
+  width: 100%;
+  padding: 10rem;
+  position: relative;
+}
+
+.main {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 70%;
+  border-radius: 4px;
+  display: table;
+  overflow: hidden;
+  text-align: center;
+}
+
+.left {
+  background-color: var(--color-primary-light-2);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 4rem;
+}
+
+.right {
+  background-color: var(--color-primary-dark-2);
+  display: table-cell;
+  vertical-align: middle;
+  padding: 4rem;
+}
+
+.player {
+  color: var(--color-gray);
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.active-player {
+  position: relative;
+}
+
+.active-player::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary-light);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.score {
+  font-size: 4rem;
+  color: var(--color-primary-light);
+  margin-top: 2rem;
+}
+
+.currentText,
+.currentScore {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
+
+.currentScore {
+  margin-top: 1.5rem;
+}
+
+.current {
+  background-color: var(--color-primary-light);
+  padding: 2rem;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 8rem;
+  width: 10rem;
+}
+
+.new-game {
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  transform: translate(-50%);
+}
+
+.hold {
+  position: absolute;
+  left: 50%;
+  bottom: 4rem;
+  transform: translate(-50%);
+}
+
+.dice {
+  width: 4rem;
+  height: 4rem;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.roll-dice {
+  position: absolute;
+  left: 50%;
+  bottom: 10rem;
+  transform: translate(-50%);
+}
+
+.heading-primary {
+  color: white;
+  font-size: 4.2rem;
+  background-image: linear-gradient(to right, #1864ab, #c92a2a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  padding: 0.8rem 2rem;
+  background-color: white;
+  border: none;
+  color: var(--color-gray);
+  font-weight: 500;
+  font-size: 1.2rem;
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: var(--color-gray-1);
+}
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 3s;
+}
+
+.modal:target {
+  visibility: visible;
+  opacity: 1;
+}

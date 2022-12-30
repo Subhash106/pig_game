@@ -47,7 +47,7 @@ const activatePlayer = playerNumber => {
 document.querySelector(".roll-dice").addEventListener("click", function () {
   oneBeep.play();
   const score = Math.ceil(Math.random() * 6);
-  console.log("score", score);
+
   for (let i = 1; i <= 6; i++) {
     if (i <= score) {
       document.querySelector(`.point-${i}`).style.display = "block";

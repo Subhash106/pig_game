@@ -132,6 +132,60 @@ body {
   left: 50%;
   top: 30%;
   transform: translate(-50%, -50%);
+  border-radius: 4px;
+  padding: 4px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dice-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dice-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dice-4,
+.dice-6 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dice-5 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.dice-5 .point-2 {
+  grid-column: 3;
+}
+
+.dice-5 .point-3 {
+  grid-column: 2;
+  grid-row: 2/3;
+}
+
+.dice-5 .point-4 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.dice-5 .point-5 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.points {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.point {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
 }
 
 .roll-dice {

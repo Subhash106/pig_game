@@ -14,6 +14,22 @@ const right = document.querySelector(".right");
 const player1 = document.querySelector(".player-1");
 const player2 = document.querySelector(".player-2");
 
+const win = function (plyr) {
+  const burst = new mojs.Burst({
+    parent: plyr,
+    count: 8,
+    isYoyo: true,
+    duration: 500,
+    repeat: 1,
+    isShowStart: true,
+    onComplete: function () {
+      this.replay();
+    }
+  });
+
+  burst.play();
+};
+
 const activatePlayer = playerNumber => {
   if (playerNumber === 2) {
     left.style.backgroundColor = "#e599f7";
@@ -31,7 +47,21 @@ const activatePlayer = playerNumber => {
 document.querySelector(".roll-dice").addEventListener("click", function () {
   oneBeep.play();
   const score = Math.ceil(Math.random() * 6);
-  dice.textContent = score;
+  console.log("score", score);
+  for (let i = 1; i <= 6; i++) {
+    if (i <= score) {
+      document.querySelector(`.point-${i}`).style.display = "block";
+    } else {
+      document.querySelector(`.point-${i}`).style.display = "none";
+    }
+
+    if (dice.classList.contains(`dice-${i}`))
+      dice.classList.remove(`dice-${i}`);
+  }
+
+  dice.classList.add(`dice-${score}`);
+  dice.style.opacity = 1;
+  dice.style.visibility = "visible";
 
   if (score === 1) {
     switchAudio.play();
@@ -61,14 +91,8 @@ document.querySelector(".hold").addEventListener("click", function () {
 
     if (Number(score1Node.textContent) >= 100) {
       // user 1 wins
-      const burst = new mojs.Burst({
-        parent: player1,
-        count: 30
-      });
-
-      burst.replay();
+      win(player1);
     } else {
-      switchAudio.play();
       player = 2;
       activatePlayer(2);
       currentScore1.textContent = 0;
@@ -79,14 +103,8 @@ document.querySelector(".hold").addEventListener("click", function () {
 
     if (Number(score2Node.textContent) >= 100) {
       // user 2 wins
-      const burst = new mojs.Burst({
-        parent: player2,
-        count: 30
-      });
-
-      burst.replay();
+      win(player2);
     } else {
-      switchAudio.play();
       player = 1;
       activatePlayer(1);
       currentScore2.textContent = 0;
@@ -102,5 +120,6 @@ document.querySelector(".new-game").addEventListener("click", function () {
   score2Node.textContent = 0;
   currentScore1.textContent = 0;
   currentScore2.textContent = 0;
-  dice.textContent = "";
+  dice.style.opacity = 0;
+  dice.style.visibility = "hidden";
 });

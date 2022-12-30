@@ -3,6 +3,7 @@
 let player = 1;
 const switchAudio = new Audio("negative_beeps-6008.mp3");
 const oneBeep = new Audio("one_beep-99630.mp3");
+const gameStart = new Audio("game-start-6104.mp3");
 const dice = document.querySelector(".dice");
 const score1Node = document.querySelector(".score-1");
 const score2Node = document.querySelector(".score-2");
@@ -91,4 +92,15 @@ document.querySelector(".hold").addEventListener("click", function () {
       currentScore2.textContent = 0;
     }
   }
+});
+
+document.querySelector(".new-game").addEventListener("click", function () {
+  gameStart.play();
+  player = 1;
+  activatePlayer(1);
+  score1Node.textContent = 0;
+  score2Node.textContent = 0;
+  currentScore1.textContent = 0;
+  currentScore2.textContent = 0;
+  dice.textContent = "";
 });
